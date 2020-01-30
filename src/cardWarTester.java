@@ -1,8 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class test1 {
-    public static void main(String[] args) {
+/*Name: Long & Selina Do
+ * Date: 01/28/20
+ * Purpose: Play a War of Card games between players
+ * Inputs: Required the user to provide how many players are playing
+ * Output: Bunch of strings
+ */
+public class cardWarTester{
+        public static void main(String[] args){
+		
         /*ArrayList<String> array1 = new ArrayList<String>(5);
         array1.add("hi");
         array1.add("base");
@@ -43,6 +47,6 @@ public class test1 {
         System.out.println(hand1.deal(2).size());
         System.out.println(arr1);
         System.out.println(card4);
-    }
+	}
 
 }
