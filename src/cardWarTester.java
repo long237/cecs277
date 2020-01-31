@@ -4,49 +4,60 @@
  * Inputs: Required the user to provide how many players are playing
  * Output: Bunch of strings
  */
-public class cardWarTester{
-        public static void main(String[] args){
-		
-        /*ArrayList<String> array1 = new ArrayList<String>(5);
-        array1.add("hi");
-        array1.add("base");
-        array1.add("nice");
-        array1.add("change");
-        array1.add("noice");
-        array1.add("hello");
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-        List<String> sub1 = array1.subList(0,3);
-        System.out.println(sub1);
-        System.out.println(array1);
-        sub1.add("test");
-        System.out.println(sub1);
-        System.out.println(array1);*/
+public class cardWarTester {
+    public static void main(String[] args) {
+        // # of players
+        Scanner in = new Scanner(System.in);
+        System.out.print("How many people will be playing?: ");
+        int numPlayers = in.nextInt();
 
-        DeckofCard hand1 = new DeckofCard(5);
-        Card card1 = new Card();
-        Card card2 = new Card(2, "space");
+        // adds 52 cards into deck
+        DeckofCard deck = new DeckofCard(52);
+        for (int i = 1; i < 14; i++) {
+            ArrayList<Card> ranks = deck.defaultDeck(i);
+            for (int j = 0; j < 4; j++) {
+                deck.add(ranks.get(j));
+            }
+        }
+        System.out.println(deck);
+        // shuffles deck
+        deck.shuffleCards();
+        System.out.println(deck);
+        //System.out.println(deck.deal(numPlayers));
 
-        Card card3 = new Card(3, "space");
-        Card card4 = new Card(4, "space");
-        Card card5 = new Card(5, "space");
-        Card card6 = new Card(6, "space");
-        Card card7 = new Card(7, "space");
-        Card card8 = new Card(8, "space");
-        Card card9 = new Card(9, "space");
-        hand1.add(card1);
-        hand1.add(card2);
-        hand1.add(card3);
-        hand1.add(card4);
-        hand1.add(card5);
-        hand1.add(card6);
-        hand1.add(card7);
-        hand1.add(card8);
-        hand1.add(card9);
-        System.out.println(hand1.size());
-        ArrayList<DeckofCard> arr1 = hand1.deal(2);
-        System.out.println(hand1.deal(2).size());
-        System.out.println(arr1);
-        System.out.println(card4);
-	}
+        deck.play();
+
+        System.out.println(deck.play());
+
+        ArrayList<DeckofCard> players = deck.deal(numPlayers);
+        System.out.println(players);
+
+
+        boolean emptyHand = false;
+        while (emptyHand == false) {
+            for (int i = 0; i < players.size(); i++) {
+                emptyHand = players.get(i).isEmpty();
+                if (emptyHand) {
+                    emptyHand = true;
+                }
+
+                Card p = players.get(i).play();
+
+                System.out.println(p);
+            }
+        }
+    }
+
+
+        //System.out.println(p2);
+
+        //hello
+        //deck.play(p1);
+        //System.out.println(deck.play(p1));
+
 
 }

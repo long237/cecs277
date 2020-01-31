@@ -7,8 +7,8 @@ public class Card {
 	}
 	
 	public Card () {
-		rank = 2;
-		suit = "Heart";
+		rank = 1;
+		suit = "Spades";
 	}
 
 	public Card (int userRank, String userSuit) {

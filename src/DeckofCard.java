@@ -57,7 +57,10 @@ public class DeckofCard {
 	public void shuffleCards() {
 		Collections.shuffle(deck);
 	}
-
+	
+	/** method deal take in an nth amount of player and 
+	 * distribute the main deck into nth amount of DeckofCard obj and
+	 * return an arrayList of DeckofCard*/
 	public ArrayList<DeckofCard> deal(int numPlayer) {
 		amountCards = amountCards % numPlayer;
 		ArrayList<DeckofCard> playerList = new ArrayList<DeckofCard> (numPlayer);
