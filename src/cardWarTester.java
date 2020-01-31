@@ -3,6 +3,7 @@
  * Purpose: Play a War of Card games between players
  * Inputs: Required the user to provide how many players are playing
  * Output: Bunch of strings
+ * Just testing version control
  */
 import java.lang.reflect.Array;
 import java.util.ArrayList;
