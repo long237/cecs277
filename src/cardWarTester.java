@@ -23,41 +23,61 @@ public class cardWarTester {
                 deck.add(ranks.get(j));
             }
         }
-        System.out.println(deck);
+
         // shuffles deck
         deck.shuffleCards();
-        System.out.println(deck);
-        //System.out.println(deck.deal(numPlayers));
-
-        deck.play();
-
-        System.out.println(deck.play());
+        //System.out.println(deck);
 
         ArrayList<DeckofCard> players = deck.deal(numPlayers);
         System.out.println(players);
 
-
+        ArrayList<Card> discardPile = new ArrayList<Card>();
         boolean emptyHand = false;
-        while (emptyHand == false) {
+        while (!emptyHand) {
             for (int i = 0; i < players.size(); i++) {
                 emptyHand = players.get(i).isEmpty();
                 if (emptyHand) {
-                    emptyHand = true;
+                    break;
                 }
 
                 Card p = players.get(i).play();
+                System.out.println("Player " + (i+1) + " plays " + p);
+                discardPile.add(p);
 
-                System.out.println(p);
+                // Cards players play are put into an ArrayList to make discard pile
+                if ( i == players.size() - 1 ){
+
+                    // find the index(player) that has the biggest rank
+                    int biggestIndex = 0;
+                    for (int j = 0; j < players.size() - 1; j++){
+                        if (discardPile.get(j).getRank() < discardPile.get(j+1).getRank()){
+                            biggestIndex = j+1;
+                        }
+                        else {
+                            biggestIndex = j;
+                        }
+                    }
+
+                    // Tells who put down the highest card
+                    System.out.println("---------------------------------------------------------------------------");
+                    System.out.println("Player " + (biggestIndex+1) + " wins the round");
+
+                    // puts the played cards into the deck that put down the higher rank card (winner's deck
+                    DeckofCard winningDeck = players.get(biggestIndex);
+                    for (int k = 0; k < players.size() ; k++){
+                        winningDeck.add(discardPile.get(k));
+                    }
+                    discardPile.clear();
+                    // shows winning players deck with the added new cards
+                    System.out.println("winning deck: " + winningDeck);
+                    // shows both players deck after the round
+                    System.out.println("both players deck after round: " + players);
+                    System.out.println();
+
+                }
             }
+            // used to test for 1 round, delete if want to see multiple rounds
+            break;
         }
     }
-
-
-        //System.out.println(p2);
-
-        //hello
-        //deck.play(p1);
-        //System.out.println(deck.play(p1));
-
-
 }
