@@ -83,7 +83,14 @@ public class DeckofCard {
     public void add(Card userCard) {
         deck.add(userCard);
     }
-
+    public void addDeck(DeckofCard cardDeck) {
+        for (int k = 0; k < cardDeck.size() ; k++){
+	        deck.add(cardDeck.get(k));
+        }
+    }
+    /*public boolean addFront(DeckofCard cardDeck) {
+	deck.addAll(cardDeck);
+	}*/
     public int size() {
         return deck.size();
     }
@@ -103,8 +110,12 @@ public class DeckofCard {
         int biggestIndex = 0;
         //iterate the the arraryList and update the largest card.
         for (int j = 0; j < deck.size() - 1; j++){
-            if (deck.get(j).getRank() < deck.get(j+1).getRank()){
-                biggestIndex = j+1;
+	    if (deck.get(j).getRank() == deck.get(j + 1).getRank()) {
+	   	return -1;	
+	    }
+
+	    else if (deck.get(j).getRank() < deck.get(j + 1).getRank()){
+                biggestIndex = j + 1;
             }
             else {
                 biggestIndex = j;

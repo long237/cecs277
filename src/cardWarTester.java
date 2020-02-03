@@ -15,7 +15,7 @@ public class cardWarTester {
         System.out.print("How many people will be playing?: ");
         int numPlayers = in.nextInt();
 
-        // adds 52 cards into deck
+        // create a main dech and adds 52 cards into deck
         DeckofCard deck = new DeckofCard(52);
         for (int i = 1; i < 14; i++) {
             ArrayList<Card> ranks = deck.defaultDeck(i);
@@ -27,12 +27,73 @@ public class cardWarTester {
         // shuffles deck
         deck.shuffleCards();
         //System.out.println(deck);
+	
+	//create an Arraylist that contains multiple decks of card objects that represent
+	//each player hands.
+        ArrayList<DeckofCard> playersList = deck.deal(numPlayers);
+        System.out.println(playersList);
+	DeckofCard discardPile = new DeckofCard();
+	DeckofCard warDeck = new DeckofCard();
 
-        ArrayList<DeckofCard> players = deck.deal(numPlayers);
-        System.out.println(players);
+	//boolean contPlay = true;
+	int eliminatedPlayers = 0;
+	//Keep the game going as long as there are 2 players still have cards
+	while (eliminatedPlayers != (numPlayers - 1) ) {
+		/*check every players hands and increase the counter
+		when a player has no card left*/
+		for (int i = 0; i < playersList.size(); i++) {
+			if (playersList.get(i).isEmpty()) {
+				eliminatedPlayers++;
+			}
+
+			//every player play a card each iteration of the while loop
+			else {	
+				/*remove a card from the player hand
+				and add it to the discard pile. */
+				Card playerCard = playersList.get(i).play();
+				System.out.println("Player " + (i + 1) + " plays " + playerCard);	
+				discardPile.add(playerCard);
+			}
+		}
+
+		/*compare all the cards on the table and return the 
+		index of the biggest card (which is also the index of the player */
+		int roundWPlayer = discardPile.compareCards();
+		
+		//if 2 players play the same card then they enter a war.
+		if (roundWPlayer == -1) { 
+			DeckofCard faceDownDeck = war(playersList);
+		}
+		
+		//other wise add the discardPile to the winning player deck
+		else {
+		//add the discardPile to the winning player deck
+			playersList.get(roundWPlayer).addDeck(discardPile);
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //ArrayList<Card> discardPile = new ArrayList<Card>();
-        DeckofCard discardPile = new DeckofCard();
+        /*DeckofCard discardPile = new DeckofCard();
         boolean emptyHand = false;
         while (!emptyHand) {
             for (int i = 0; i < players.size(); i++) {
@@ -79,6 +140,29 @@ public class cardWarTester {
             }
             // used to test for 1 round, delete if want to see multiple rounds
             //break;
-        }
+        } */
     }
+
+    public static DeckofCard war(ArrayList<DeckofCard> players) {
+		DeckofCard discardPile = new DeckofCard();
+		DeckofCard warDeck = new DeckofCard();
+		for (int i = 0; i < players.size(); i++) {
+			for (int j = 0; j < 3; j++) {
+				Card faceDown = players.get(i).play();
+				warDeck.add(faceDown);
+				Card playerCard = players.get(i).play();
+				System.out.println("Player " + (i + 1) + " plays " + playerCard);
+				discardPile.add(playerCard);
+			}
+		}
+		int wPlayer = discardPile.compareCards();
+		if (wPlayer == -1) {
+			return warDeck;
+		}
+		else {
+			players.get(wPlayer).addDeck(discardPile);
+			players.get(wPlayer).addDeck(warDeck);
+		}
+	}
 }
+
