@@ -31,7 +31,8 @@ public class cardWarTester {
         ArrayList<DeckofCard> players = deck.deal(numPlayers);
         System.out.println(players);
 
-        ArrayList<Card> discardPile = new ArrayList<Card>();
+        //ArrayList<Card> discardPile = new ArrayList<Card>();
+        DeckofCard discardPile = new DeckofCard();
         boolean emptyHand = false;
         while (!emptyHand) {
             for (int i = 0; i < players.size(); i++) {
@@ -48,7 +49,7 @@ public class cardWarTester {
                 if ( i == players.size() - 1 ){
 
                     // find the index(player) that has the biggest rank
-                    int biggestIndex = 0;
+                    int biggestIndex = discardPile.compareCards();
                     for (int j = 0; j < players.size() - 1; j++){
                         if (discardPile.get(j).getRank() < discardPile.get(j+1).getRank()){
                             biggestIndex = j+1;
@@ -77,7 +78,7 @@ public class cardWarTester {
                 }
             }
             // used to test for 1 round, delete if want to see multiple rounds
-            break;
+            //break;
         }
     }
 }

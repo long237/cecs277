@@ -88,6 +88,33 @@ public class DeckofCard {
         return deck.size();
     }
 
+    public Card get(int index) {
+	    return deck.get(index);
+    }
+
+    public void clear() {
+        deck.clear();
+    }
+
+    /**This method is to compare all the cards in the deck and
+     * @return biggestCard, @param deckofcard
+     */
+    public int compareCards() {
+        int biggestIndex = 0;
+        //iterate the the arraryList and update the largest card.
+        for (int j = 0; j < deck.size() - 1; j++){
+            if (deck.get(j).getRank() < deck.get(j+1).getRank()){
+                biggestIndex = j+1;
+            }
+            else {
+                biggestIndex = j;
+            }
+        }
+
+        return biggestIndex;
+    }
+
+
     public ArrayList<Card> defaultDeck(int rank){
         //array of 1 rank with 4 suits
         ArrayList<Card> cardsF = new ArrayList<Card>();
