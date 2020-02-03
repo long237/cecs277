@@ -4,6 +4,7 @@
  * Inputs: Required the user to provide how many players are playing
  * Output: Bunch of strings
  */
+import java.io.CharArrayReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,10 +30,14 @@ public class cardWarTester {
         //System.out.println(deck);
 
         ArrayList<DeckofCard> players = deck.deal(numPlayers);
-        System.out.println(players);
+        DeckofCard player1 = players.get(0);
+        DeckofCard player2 = players.get(1);
+		System.out.println("this is player 1 hand: " + player1);
+		System.out.println("this is player 2 hand: " + player2);
+        //System.out.println(players);
 
         //ArrayList<Card> discardPile = new ArrayList<Card>();
-        DeckofCard discardPile = new DeckofCard();
+/*        DeckofCard discardPile = new DeckofCard();
         boolean emptyHand = false;
         while (!emptyHand) {
             for (int i = 0; i < players.size(); i++) {
@@ -79,6 +84,20 @@ public class cardWarTester {
             }
             // used to test for 1 round, delete if want to see multiple rounds
             //break;
-        }
+        }*/
     }
+
+    public static void playRound(DeckofCard player1, DeckofCard player2) {
+    	DeckofCard discardPile = new DeckofCard();
+    	while (player1.size() > 4 && player2.size() > 4) {
+			Card player1Card = player1.play();
+			Card player2Card = player2.play();
+    		discardPile.add(player1Card);
+    		discardPile.add(player2Card);
+    		if (player1Card.getRank() > player2Card.getRank()) {
+    			player1.
+			}
+
+
+	}
 }
