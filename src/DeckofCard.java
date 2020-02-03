@@ -84,6 +84,12 @@ public class DeckofCard {
         deck.add(userCard);
     }
 
+    public void addDeck(DeckofCard cardDeck) {
+        for (int k = 0; k < cardDeck.size() ; k++){
+            deck.add(cardDeck.get(k));
+        }
+
+    }
     public int size() {
         return deck.size();
     }
