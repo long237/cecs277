@@ -109,17 +109,18 @@ public class DeckofCard {
     public int compareCards() {
         int biggestIndex = 0;
         //iterate the the arraryList and update the largest card.
-        for (int j = 0; j < deck.size() - 1; j++){
-	    if (deck.get(j).getRank() == deck.get(j + 1).getRank()) {
-	   	return -1;	
-	    }
-
-	    else if (deck.get(j).getRank() < deck.get(j + 1).getRank()){
-                biggestIndex = j + 1;
+        for (int j = 1; j < deck.size() - 1; j++){
+            if (deck.get(j).getRank() == deck.get(biggestIndex).getRank()) {
+                System.out.println("initiate war");
+                return -1;
             }
-            else {
+            else if (deck.get(j).getRank() > deck.get(biggestIndex).getRank()) {
                 biggestIndex = j;
+
+
             }
+            System.out.println("biggest index: " + biggestIndex);
+            return biggestIndex;
         }
 
         return biggestIndex;

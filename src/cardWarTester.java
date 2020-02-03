@@ -32,8 +32,8 @@ public class cardWarTester {
 	//each player hands.
         ArrayList<DeckofCard> playersList = deck.deal(numPlayers);
         System.out.println(playersList);
-	DeckofCard discardPile = new DeckofCard();
-	DeckofCard warDeck = new DeckofCard();
+		DeckofCard discardPile = new DeckofCard();
+		DeckofCard warDeck = new DeckofCard();
 
 	//boolean contPlay = true;
 	int eliminatedPlayers = 0;
@@ -47,29 +47,29 @@ public class cardWarTester {
 			}
 
 			//every player play a card each iteration of the while loop
-			else {	
+			else {
 				/*remove a card from the player hand
 				and add it to the discard pile. */
 				Card playerCard = playersList.get(i).play();
-				System.out.println("Player " + (i + 1) + " plays " + playerCard);	
+				System.out.println("Player " + (i + 1) + " plays " + playerCard);
 				discardPile.add(playerCard);
 			}
 		}
 
-		/*compare all the cards on the table and return the 
+		/*compare all the cards on the table and return the
 		index of the biggest card (which is also the index of the player */
 		int roundWPlayer = discardPile.compareCards();
-		
+
 		//if 2 players play the same card then they enter a war.
-		if (roundWPlayer == -1) { 
+/*		if (roundWPlayer == -1) {
 			DeckofCard faceDownDeck = war(playersList);
 		}
-		
-		//other wise add the discardPile to the winning player deck
-		else {
+
+		//other wise add the discardPile to the winning player deck*/
+		//else {
 		//add the discardPile to the winning player deck
 			playersList.get(roundWPlayer).addDeck(discardPile);
-		}
+		//}
 	}
 
 
@@ -143,26 +143,28 @@ public class cardWarTester {
         } */
     }
 
-    public static DeckofCard war(ArrayList<DeckofCard> players) {
+/*    public static void war(ArrayList<DeckofCard> players) {
 		DeckofCard discardPile = new DeckofCard();
 		DeckofCard warDeck = new DeckofCard();
-		for (int i = 0; i < players.size(); i++) {
-			for (int j = 0; j < 3; j++) {
-				Card faceDown = players.get(i).play();
-				warDeck.add(faceDown);
-				Card playerCard = players.get(i).play();
-				System.out.println("Player " + (i + 1) + " plays " + playerCard);
-				discardPile.add(playerCard);
+		int keepPlaying = -1;
+		while (keepPlaying == -1) {
+			for (int i = 0; i < players.size(); i++) {
+				for (int j = 0; j < 3; j++) {
+					Card faceDown = players.get(i).play();
+					warDeck.add(faceDown);
+					Card playerCard = players.get(i).play();
+					System.out.println("Player " + (i + 1) + " plays " + playerCard);
+					discardPile.add(playerCard);
+				}
+			}
+			int wPlayer = discardPile.compareCards();
+			if (wPlayer == -1) {
+				return warDeck;
+			} else {
+				players.get(wPlayer).addDeck(discardPile);
+				players.get(wPlayer).addDeck(warDeck);
 			}
 		}
-		int wPlayer = discardPile.compareCards();
-		if (wPlayer == -1) {
-			return warDeck;
-		}
-		else {
-			players.get(wPlayer).addDeck(discardPile);
-			players.get(wPlayer).addDeck(warDeck);
-		}
-	}
+	}*/
 }
 
