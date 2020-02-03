@@ -28,6 +28,18 @@ public class Card {
 	 */
 
 	public String toString() {
+		if(rank == 11) {
+			return "Jack of " + suit;
+		}
+		if(rank == 12) {
+			return "Queen of " + suit;
+		}
+		if(rank == 13) {
+			return "King of " + suit;
+		}
+		if(rank == 1) {
+			return "Ace of " + suit;
+		}
 		return rank + " of " + suit;
 	}
 
