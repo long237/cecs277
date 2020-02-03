@@ -58,7 +58,6 @@ public class DeckofCard {
     }
 
     public ArrayList<DeckofCard> deal(int numPlayer) {
-        amountCards = amountCards % numPlayer;
         ArrayList<DeckofCard> playerList = new ArrayList<DeckofCard> (numPlayer);
 
         for (int n = 0; n < numPlayer; n++) {

@@ -48,56 +48,6 @@ public class cardWarTester {
 			System.out.println("Congratulation !!! Player 1 win the game. ");
 		}
 		System.out.println("Game over !!!");
-
-        //ArrayList<Card> discardPile = new ArrayList<Card>();
-/*        DeckofCard discardPile = new DeckofCard();
-        boolean emptyHand = false;
-        while (!emptyHand) {
-            for (int i = 0; i < players.size(); i++) {
-                emptyHand = players.get(i).isEmpty();
-                if (emptyHand) {
-                    break;
-                }
-
-                Card p = players.get(i).play();
-                System.out.println("Player " + (i+1) + " plays " + p);
-                discardPile.add(p);
-
-                // Cards players play are put into an ArrayList to make discard pile
-                if ( i == players.size() - 1 ){
-
-                    // find the index(player) that has the biggest rank
-                    int biggestIndex = discardPile.compareCards();
-                    for (int j = 0; j < players.size() - 1; j++){
-                        if (discardPile.get(j).getRank() < discardPile.get(j+1).getRank()){
-                            biggestIndex = j+1;
-                        }
-                        else {
-                            biggestIndex = j;
-                        }
-                    }
-
-                    // Tells who put down the highest card
-                    System.out.println("---------------------------------------------------------------------------");
-                    System.out.println("Player " + (biggestIndex+1) + " wins the round");
-
-                    // puts the played cards into the deck that put down the higher rank card (winner's deck
-                    DeckofCard winningDeck = players.get(biggestIndex);
-                    for (int k = 0; k < players.size() ; k++){
-                        winningDeck.add(discardPile.get(k));
-                    }
-                    discardPile.clear();
-                    // shows winning players deck with the added new cards
-                    System.out.println("winning deck: " + winningDeck);
-                    // shows both players deck after the round
-                    System.out.println("both players deck after round: " + players);
-                    System.out.println();
-
-                }
-            }
-            // used to test for 1 round, delete if want to see multiple rounds
-            //break;
-        }*/
     }
 
     public static void playRound(DeckofCard player1, DeckofCard player2) {
