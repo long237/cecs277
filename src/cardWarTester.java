@@ -59,6 +59,7 @@ public class cardWarTester {
 		/*compare all the cards on the table and return the
 		index of the biggest card (which is also the index of the player */
 		int roundWPlayer = discardPile.compareCards();
+		System.out.println("this is the winner: " + roundWPlayer);
 
 		//if 2 players play the same card then they enter a war.
 /*		if (roundWPlayer == -1) {
