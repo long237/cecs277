@@ -20,7 +20,7 @@ public class cardWarTester {
 
         // adds 52 cards into deck
         DeckofCard deck = new DeckofCard(52);
-        for (int i = 1; i < 14; i++) {
+        for (int i = 2; i < 15; i++) {
             ArrayList<Card> ranks = deck.defaultDeck(i);
             for (int j = 0; j < 4; j++) {
                 deck.add(ranks.get(j));

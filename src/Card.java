@@ -33,7 +33,8 @@ public class Card {
 		if(rank == 13) {
 			return "King of " + suit;
 		}
-		if(rank == 1) {
+		if(rank == 14
+		) {
 			return "Ace of " + suit;
 		}
 		return rank + " of " + suit;
