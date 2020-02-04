@@ -9,39 +9,6 @@ public class DeckofCard {
 
 
     public static void main(String[] args){
-        ArrayList<String> array1 = new ArrayList<String>(5);
-        array1.add("hi");
-        array1.add("base");
-        array1.add("nice");
-        array1.add("change");
-        array1.add("noice");
-        array1.add("hello");
-        Collections.shuffle(array1);
-
-        DeckofCard hand1 = new DeckofCard(5);
-        Card card1 = new Card();
-        Card card2 = new Card(2, "glove");
-
-        Card card3 = new Card(3, "glove");
-        Card card4 = new Card(4, "glove");
-        Card card5 = new Card(5, "glove");
-        Card card6 = new Card(6, "glove");
-        Card card7 = new Card(7, "glove");
-        Card card8 = new Card(8, "glove");
-        Card card9 = new Card(9, "glove");
-        hand1.add(card1);
-        hand1.add(card2);
-        hand1.add(card3);
-        hand1.add(card4);
-        hand1.add(card5);
-        hand1.add(card6);
-        hand1.add(card7);
-        hand1.add(card8);
-        hand1.add(card9);
-        System.out.println(hand1.size());
-        //ArrayList<DeckofCard> arr1 = hand1.deal(2);
-        System.out.println(hand1.deal(2).size());
-        System.out.println(card4);
     }
 
     public DeckofCard () {
@@ -53,10 +20,12 @@ public class DeckofCard {
         deck = new ArrayList<Card>(amountCards);
     }
 
+    //shuffle all the elements in the deck
     public void shuffleCards() {
         Collections.shuffle(deck);
     }
 
+    //divide the cards evenly to multiple players in the game
     public ArrayList<DeckofCard> deal(int numPlayer) {
         ArrayList<DeckofCard> playerList = new ArrayList<DeckofCard> (numPlayer);
 
@@ -75,50 +44,37 @@ public class DeckofCard {
         return playerList;
     }
 
+    //remove the first card out of a deck
     public Card play() {
         return deck.remove(0);
     }
 
+    //add one card to the back of the deck
     public void add(Card userCard) {
         deck.add(userCard);
     }
 
+    //add one deck of card to the back of another deck
     public void addDeck(DeckofCard cardDeck) {
         for (int k = 0; k < cardDeck.size() ; k++){
             deck.add(cardDeck.get(k));
         }
 
     }
+    //return the size of the deck
     public int size() {
         return deck.size();
     }
 
+    //reutrn the card in a deck
     public Card get(int index) {
 	    return deck.get(index);
     }
 
+    //clear all cards out of a deck
     public void clear() {
         deck.clear();
     }
-
-    /**This method is to compare all the cards in the deck and
-     * @return biggestCard, @param deckofcard
-     */
-    public int compareCards() {
-        int biggestIndex = 0;
-        //iterate the the arraryList and update the largest card.
-        for (int j = 0; j < deck.size() - 1; j++){
-            if (deck.get(j).getRank() < deck.get(j+1).getRank()){
-                biggestIndex = j+1;
-            }
-            else {
-                biggestIndex = j;
-            }
-        }
-
-        return biggestIndex;
-    }
-
 
     public ArrayList<Card> defaultDeck(int rank){
         //array of 1 rank with 4 suits
@@ -136,6 +92,7 @@ public class DeckofCard {
         return cardsF;
     }
 
+    //Check the deck to see if it is empty
     public boolean isEmpty(){
         return deck.isEmpty();
     }

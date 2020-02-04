@@ -22,10 +22,6 @@ public class Card {
 	public String getSuit() {
 		return suit;
 	} 
-	
-	/**This method is to compare all the cards in the deck and 
-	 * @return biggestCard, @param deckofcard
-	 */
 
 	public String toString() {
 		if(rank == 11) {
