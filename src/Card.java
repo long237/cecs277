@@ -5,9 +5,9 @@ public class Card {
     /** suit of each Card object */
     private String suit;
 
-    /** Makes the default card have a rank of 1 and a suit of spades*/
+    /** Makes the default card have a rank of 14 (Ace) and a suit of spades*/
     public Card () {
-        rank = 1;
+        rank = 14;
         suit = "Spades";
     }
 
@@ -55,7 +55,7 @@ public class Card {
         if(rank == 13) {
             return "King of " + suit;
         }
-        if(rank == 1) {
+        if(rank == 14) {
             return "Ace of " + suit;
         }
         return rank + " of " + suit;
