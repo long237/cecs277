@@ -1,31 +1,36 @@
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
+/** Models a deck of cards as an object */
 public class DeckofCard {
+    /** sets the amount of cards in the DeckofCard object to 52*/
     private int amountCards = 52;
+    /** represents the deck as an ArrayList */
     private ArrayList<Card> deck;
 
-
-    public static void main(String[] args){
-    }
-
+    /** Constructs the default DeckofCards */
     public DeckofCard () {
         deck = new ArrayList<Card>();
     }
 
+    /** Constructs a DeckofCard object with a certain amount of cards*/
     public DeckofCard (int numCards) {
         amountCards = numCards;
         deck = new ArrayList<Card>(amountCards);
     }
 
-    //shuffle all the elements in the deck
+    /** Shuffles all the elements in the deck */
     public void shuffleCards() {
         Collections.shuffle(deck);
     }
 
-    //divide the cards evenly to multiple players in the game
+    /**
+     * Divides the cards evenly to players in the game
+     *
+     * @param numPlayer amount of players participating in the game
+     * @return  players' deck of cards as an ArrayList
+     */
     public ArrayList<DeckofCard> deal(int numPlayer) {
         ArrayList<DeckofCard> playerList = new ArrayList<DeckofCard> (numPlayer);
 
@@ -44,40 +49,66 @@ public class DeckofCard {
         return playerList;
     }
 
-    //remove the first card out of a deck
+    /**
+     * Removes the first card out of a deck
+     *
+     * @return the card that was removed from a deck
+     */
     public Card play() {
         return deck.remove(0);
     }
 
-    //add one card to the back of the deck
+    /**
+     * Adds one card to the back of the deck
+     *
+     * @param userCard  card that will be put at the bottom of the deck
+     */
     public void add(Card userCard) {
         deck.add(userCard);
     }
 
-    //add one deck of card to the back of another deck
+    /**
+     * Add one deck of cards to the back of another deck
+     *
+     * @param cardDeck deck that will be put behind another deck
+     */
     public void addDeck(DeckofCard cardDeck) {
         for (int k = 0; k < cardDeck.size() ; k++){
             deck.add(cardDeck.get(k));
         }
-
     }
-    //return the size of the deck
+
+    /**
+     * Calculates the size of the deck
+     *
+     * @return the amount of cards in a deck
+     */
     public int size() {
         return deck.size();
     }
 
-    //reutrn the card in a deck
+    /**
+     * Obtains the card in a deck
+     *
+     * @param index integer used to get a certain card at a location
+     * @return the card at the specific index
+     */
     public Card get(int index) {
-	    return deck.get(index);
+        return deck.get(index);
     }
 
-    //clear all cards out of a deck
+    /** Clears all cards out of a deck */
     public void clear() {
         deck.clear();
     }
 
+    /**
+     * Assigns each rank to 4 suits
+     *
+     * @param rank  integer that will be assigned to 4 different suits
+     * @return ArrayList of 1 rank with 4 suits
+     */
     public ArrayList<Card> defaultDeck(int rank){
-        //array of 1 rank with 4 suits
         ArrayList<Card> cardsF = new ArrayList<Card>();
         Card card1 = new Card(rank, "Spades");
         Card card2 = new Card(rank, "Hearts");
@@ -92,16 +123,20 @@ public class DeckofCard {
         return cardsF;
     }
 
-    //Check the deck to see if it is empty
+    /**
+     * Checks the deck to see if it is empty
+     *
+     * @return true or false if the deck is empty
+     */
     public boolean isEmpty(){
         return deck.isEmpty();
     }
 
-    public Card backImage(Card warCard){
-        warCard = new Card(0,"xx");
-        return warCard;
-    }
-
+    /**
+     * String representation of the deck
+     *
+     * @return DeckofCard objects as a string
+     */
     public String toString() {
         ArrayList <Object> tempArr = new ArrayList <Object> ();
         for (int i = 0; i < deck.size(); i++) {

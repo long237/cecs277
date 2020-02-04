@@ -1,45 +1,63 @@
-
+/** Each Card object contains a rank and suit that will be a part of a deck */
 public class Card {
-	private int rank;
-	private String suit;
+    /** value of each Card object */
+    private int rank;
+    /** suit of each Card object */
+    private String suit;
 
-        public static void main(String[] args){
-	}
-	
-	public Card () {
-		rank = 1;
-		suit = "Spades";
-	}
+    /** Makes the default card have a rank of 1 and a suit of spades*/
+    public Card () {
+        rank = 1;
+        suit = "Spades";
+    }
 
-	public Card (int userRank, String userSuit) {
-		rank = userRank;
-		suit = userSuit;
-	}
-	public int getRank() {
-		return rank;
-	}
+    /**
+     * Constructs and sets a Card object with an inputted rank and suit
+     *
+     * @param userRank  integer assigned to a Card object's rank
+     * @param userSuit  suit attribute assigned to a Card object's rank
+     */
+    public Card (int userRank, String userSuit) {
+        rank = userRank;
+        suit = userSuit;
+    }
 
-	public String getSuit() {
-		return suit;
-	} 
+    /**
+     * Obtains a Card object's rank
+     *
+     * @return the rank of a Card object
+     */
+    public int getRank() {
+        return rank;
+    }
 
-	public String toString() {
-		if(rank == 11) {
-			return "Jack of " + suit;
-		}
-		if(rank == 12) {
-			return "Queen of " + suit;
-		}
-		if(rank == 13) {
-			return "King of " + suit;
-		}
-		if(rank == 14
-		) {
-			return "Ace of " + suit;
-		}
-		return rank + " of " + suit;
-	}
+    /**
+     * Obtains a Card object's suit
+     *
+     * @return the suit of a Card object
+     */
+    public String getSuit() {
+        return suit;
+    }
 
-	 
+    /**
+     * String representation of a Card object
+     *
+     * @return Card object as a string with rank and suit
+     */
+    public String toString() {
+        if(rank == 11) {
+            return "Jack of " + suit;
+        }
+        if(rank == 12) {
+            return "Queen of " + suit;
+        }
+        if(rank == 13) {
+            return "King of " + suit;
+        }
+        if(rank == 1) {
+            return "Ace of " + suit;
+        }
+        return rank + " of " + suit;
+    }
 }
-
